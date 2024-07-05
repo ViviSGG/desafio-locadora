@@ -7,7 +7,7 @@
 
 #Instalação do Projeto
 1. Clone o repositório do projeto:
-https://github.com/ViviSGG/Locadora-de-carro---VnW.git
+https://github.com/ViviSGG/desafio-locadora.git
 
 2. Instale as dependências do projeto:
 
