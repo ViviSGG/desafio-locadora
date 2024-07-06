@@ -10,7 +10,7 @@ export default function Toyota() {
   // Consumo da API
   const fetchCars = async () => {
     try {
-      const response = await axios.get("https://api.api-ninjas.com/v1/cars?make=toyota&limit=20", {
+      const response = await axios.get("https://api.api-ninjas.com/v1/cars?make=toyota&limit=18", {
         headers: {
           'X-Api-Key': 'FZsozPo3Bace9zvaIBgjlw==LfDtYf08sEnUuLC0'  // Chave API Ninjas
         }
@@ -33,11 +33,7 @@ export default function Toyota() {
   }, []);
 
   const Navigation = () => {
-    const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-      setMounted(true); // Indica que o componente está montado
-    }, []);
 
     // Função para navegar para a página correspondente ao selecionar uma opção
     const handleChange = (event) => {
@@ -51,7 +47,7 @@ export default function Toyota() {
       }
     };
 
-    if (!mounted) return null; // Se não estiver montado, retorna null
+ 
 
     return (
       <select defaultValue="" onChange={handleChange}>
@@ -62,6 +58,7 @@ export default function Toyota() {
       </select>
     );
   };
+  
   return (
     <>
       <header>
@@ -116,7 +113,6 @@ export default function Toyota() {
               </figure>
             ))}
           </section>
-          <button>Ver mais</button>
         </section>
       </main>
       <footer>

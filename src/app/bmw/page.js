@@ -12,7 +12,7 @@ export default function BMW() {
     // Consumo da API
     const fetchCars = async () => {
         try {
-            const response = await axios.get("https://api.api-ninjas.com/v1/cars?make=bmw&limit=20", {
+            const response = await axios.get("https://api.api-ninjas.com/v1/cars?make=bmw&limit=18", {
                 headers: {
                     'X-Api-Key': 'FZsozPo3Bace9zvaIBgjlw==LfDtYf08sEnUuLC0'  // Chave API Ninjas
                 }
@@ -35,11 +35,6 @@ export default function BMW() {
     }, []);
 
     const Navigation = () => {
-      const [mounted, setMounted] = useState(false);
-  
-      useEffect(() => {
-        setMounted(true); // Indica que o componente está montado
-      }, []);
   
       // Função para navegar para a página correspondente ao selecionar uma opção
       const handleChange = (event) => {
@@ -52,9 +47,7 @@ export default function BMW() {
           window.location.href = '/toyota'; // Redireciona diretamente no lado do cliente
         }
       };
-  
-      if (!mounted) return null; // Se não estiver montado, retorna null
-  
+    
       return (
         <select defaultValue="" onChange={handleChange}>
           <option disabled value="">Marcas</option>
@@ -119,7 +112,6 @@ export default function BMW() {
               </figure>
             ))}
           </section>
-          <button>Ver mais</button>
         </section>
       </main>
       <footer>

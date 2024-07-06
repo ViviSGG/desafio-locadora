@@ -1,8 +1,29 @@
 "use client";
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+
+const Navigation = () => {
+  
+  // Função para navegar para a página correspondente ao selecionar uma opção
+  const handleChange = (event) => {
+    const selectedMake = event.target.value;
+    if (selectedMake === 'audi') {
+      window.location.href = '/audi'; // Redireciona diretamente no lado do cliente
+    } else if (selectedMake === 'bmw') {
+      window.location.href = '/bmw'; // Redireciona diretamente no lado do cliente
+    } else if (selectedMake === 'toyota') {
+      window.location.href = '/toyota'; // Redireciona diretamente no lado do cliente
+    }
+  };
+
+  return (
+    <select defaultValue="" onChange={handleChange}>
+      <option disabled value="">Marcas</option>
+      <option value="audi">Audi</option>
+      <option value="bmw">BMW</option>
+      <option value="toyota">Toyota</option>
+    </select>
+  );
+};
 
 export default function CarDetails() {
   return (
@@ -19,12 +40,7 @@ export default function CarDetails() {
                 <Link href="/">Página inicial</Link>
               </li>
               <li>
-                <select defaultValue="">
-                  <option disabled value="">Marcas</option>
-                  <option>Audi</option>
-                  <option>BMW</option>
-                  <option>Toyota</option>
-                </select>
+                <Navigation/>
               </li>
               <li>
                 <a href="">Sobre nós</a>
@@ -35,35 +51,44 @@ export default function CarDetails() {
               <li>
                 <Link href="/reserva"><img src="/purchase.png" alt="carrinho" id="icon-purchase"/></Link>
               </li>
+              
             </ul>
           </nav>
         </section>
       </header>
       <main>
-        <section>
-            <section>
-                <div>
+        <section className='details-box'>
+            <section className='details-collection-img'>
+                <div className='details-div1'>
                     <img src="/cars/toyota1.jpg" alt="car" className="carro toyota"/>
                     <img src="/cars/toyota1.jpg" alt="car" className="carro toyota"/>
                 </div>
-                <img src="/cars/toyota1.jpg" alt="car" className="carro toyota"/>
+                <div className='details-div2'>
+                  <img src="/cars/toyota1.jpg" alt="car" className="carro toyota"/>
+                </div>
             </section>
-            <h3>bmw 525i touring (1993)</h3>
-            <figure>
-                {/* <figcaption>bmw 525i touring (1993)</figcaption> */}
-                <p>Classe: lorem</p>
-                <p>Combustível: lorem</p>
-                <p>Transmissão: lorem</p>
-                <p>MPG Cidade: lorem</p>
-                <p>MPG Estrada: lorem</p>
-                <p>Deslocamento: lorem</p>
-                <p>Cilindros: lorem</p>
-                <p>Combinação MPG: lorem</p>
-                <p>Direção: lorem</p>
-            </figure>
-            <section>
-                <button>Fazer reserva</button>
-                <img src='/favorite.png' alt="favorite icon" id='favorite-reservation'/>
+            <section className='details-description'>
+              <div>
+                <h3>Car touring (1993)</h3>
+                <img src='/favorite.png' alt="favorite icon" id='favorite-reservation' />
+              </div>
+              <figure>
+                  {/* <figcaption>bmw 525i touring (1993)</figcaption> */}
+                  <p>Classe: lorem</p>
+                  <p>Combustível: lorem</p>
+                  <p>Transmissão: lorem</p>
+                  <p>MPG Cidade: lorem</p>
+                  <p>MPG Estrada: lorem</p>
+                  <p>Deslocamento: lorem</p>
+                  <p>Cilindros: lorem</p>
+                  <p>Combinação MPG: lorem</p>
+                  <p>Direção: lorem</p>
+              </figure>
+              <section className='details-action'>
+                    <Link href="/reserva">
+                      <button>Fazer reserva</button>
+                    </Link>
+              </section>
             </section>
         </section>
       </main>

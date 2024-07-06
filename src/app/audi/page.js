@@ -12,7 +12,7 @@ export default function Audi() {
     // Consumo da API
     const fetchCars = async () => {
         try {
-            const response = await axios.get("https://api.api-ninjas.com/v1/cars?make=audi&limit=20", {
+            const response = await axios.get("https://api.api-ninjas.com/v1/cars?make=audi&limit=18", {
                 headers: {
                     'X-Api-Key': 'FZsozPo3Bace9zvaIBgjlw==LfDtYf08sEnUuLC0'  // Chave API Ninjas
                 }
@@ -20,7 +20,7 @@ export default function Audi() {
 
             const audiCars = response.data.map(car => ({
                 ...car,
-                image: '/cars/audi1.webp' // Substitui com uma imagem fixa de Audi
+                image: '/cars/audi2.webp' // Substitui com uma imagem fixa de Audi
             }));
 
             setInfo(audiCars);
@@ -35,11 +35,6 @@ export default function Audi() {
     }, []);
 
     const Navigation = () => {
-      const [mounted, setMounted] = useState(false);
-  
-      useEffect(() => {
-        setMounted(true); // Indica que o componente está montado
-      }, []);
   
       // Função para navegar para a página correspondente ao selecionar uma opção
       const handleChange = (event) => {
@@ -52,9 +47,7 @@ export default function Audi() {
           window.location.href = '/toyota'; // Redireciona diretamente no lado do cliente
         }
       };
-  
-      if (!mounted) return null; // Se não estiver montado, retorna null
-  
+    
       return (
         <select defaultValue="" onChange={handleChange}>
           <option disabled value="">Marcas</option>
@@ -119,7 +112,6 @@ export default function Audi() {
               </figure>
             ))}
           </section>
-          <button>Ver mais</button>
         </section>
       </main>
       <footer>
