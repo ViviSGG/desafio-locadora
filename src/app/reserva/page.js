@@ -17,6 +17,8 @@ export default function SimpleReservationForm() {
     const phoneDigits = formData.phone.replace(/\D/g, '');
     const cpfDigits = formData.cpf.replace(/\D/g, '');
     const birthDateDigits = formData.birthDate.replace(/\D/g, '');
+    const withdrawalDateDigits = formData.withdrawal.replace(/\D/g, '');
+    const devolutionDateDigits = formData.devolution.replace(/\D/g, '');
 
     if (phoneDigits.length !== 11) {
       alert('Telefone inválido.');
@@ -30,6 +32,16 @@ export default function SimpleReservationForm() {
 
     if (birthDateDigits.length !== 8) {
       alert('Data de nascimento inválida.');
+      return;
+    }
+
+    if (withdrawalDateDigits.length !== 8) {
+      alert('Data de retirada inválida.');
+      return;
+    }
+
+    if (devolutionDateDigits.length !== 8) {
+      alert('Data de devolução inválida.');
       return;
     }
 
@@ -134,7 +146,27 @@ export default function SimpleReservationForm() {
                 required
               />
             </label>
-            <button type="submit">Confirmar reservas</button>
+            <label>
+              Data de Retirada:
+              <InputMask
+                mask="99/99/9999"
+                name="withdrawal"
+                value={formData.withdrawal}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              Data de Devolução:
+              <InputMask
+                mask="99/99/9999"
+                name="devolution"
+                value={formData.devolution}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <button type="submit">Confirmar</button>
           </form>
         </section>
       </main>
